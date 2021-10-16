@@ -1,38 +1,80 @@
+*{
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+table{
+  text-align: center;
+  margin: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+th{
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+
+tr{
+  padding: 10px 0;
+}
+thead>tr:hover{
+  background-color: unset;
+}
+tr:nth-of-type(2n){
+  background-color: rgba(131, 113, 81, 0.1);
+}
+tr:hover{
+  background-color: rgba(245, 222, 179, 0.4);
+}
+
+td{
+  padding: 10px 0;
+}
+td:nth-of-type(1){
+  min-width: calc(100vw - 430px);
+  text-align: left;
+  padding-left: 10px;
+}
+td:nth-of-type(2){
+  min-width: 100px;
+}
+td:nth-of-type(3){
+  min-width: 100px;
+}
+td:nth-of-type(4){
+  min-width: 100px;
+}
+td:nth-of-type(5){
+  min-width: 100px;
+}
+
+.add-task table{
+  margin: auto;
+}
+.add-task input{
+  width: 98%;
+}
+.add-task td:nth-child(1), .add-task td:nth-child(2){
+  min-width: calc((100vw - 430px) / 2);
+}
+
+.add-task td:nth-child(4), .add-task td:nth-child(3), .add-task td:nth-child(5), .add-task td:nth-child(6){
+  width: 100px;
+}
+
+.add-task [name="status"]{
+  width: 100px;
+}
+.add-task select{
+  width: 100px;
+}
+.add-task div{
+  width: 100px;
 }
