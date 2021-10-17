@@ -1,9 +1,5 @@
 import { httpService } from './http.service';
 
-// const BASE_URL = (process.env.NODE_ENV === 'production')
-//  ? '/api/toy/'
-//  : 'http://localhost:3030/api/toy/';
-
 export const taskService = {
     query,
     getById,

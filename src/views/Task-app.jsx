@@ -2,9 +2,9 @@ import React from 'react';
 import { AddTask } from '../cmps/Add-task';
 import { Header } from '../cmps/Header';
 import { taskService } from '../services/task.service';
-import { TaskList } from '../Task-list';
+import { TaskList } from '../cmps/Task-list';
 
-import { socketService } from '../services/socket.service';
+import { socketService } from '../services/socket.service.js';
 
 export class TaskApp extends React.Component {
     state={
@@ -12,9 +12,10 @@ export class TaskApp extends React.Component {
     }
 
     componentDidMount() {
-        this.loadTasks()
-        // socketService.setup();
-        // socketService.on('task-done', this.loadTasks)
+        this.loadTasks();
+        socketService.setup();
+        socketService.emit('check');
+        socketService.on('task-done', this.loadTasks);
     }
     
 
@@ -28,9 +29,15 @@ export class TaskApp extends React.Component {
         this.loadTasks()
     }
 
-    onStart = async (taskId, idx) => {
+    onStart = async (taskId) => {
         await taskService.startTask(taskId)
         this.loadTasks()
+    }
+
+    onRunAll = () => {
+        this.state.tasks.forEach(async (task)=>{
+            await taskService.startTask(task._id)
+        })
     }
 
     render() {
@@ -55,6 +62,7 @@ export class TaskApp extends React.Component {
                             <TaskList tasks={this.state.tasks} onStart={this.onStart} />
                         </tbody>
                     </table>
+                    <button onClick={this.onRunAll}>Run all</button>
                 </div>
             </div>
         );
